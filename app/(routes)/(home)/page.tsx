@@ -1,12 +1,9 @@
-
-
-import { Button } from "@/components/ui/button"
+import { HeaderMain } from "./components/HeaderMain";
 
 export default function Home() {
-
   return (
     <div>
-      <Button>Click me</Button>
+      <HeaderMain />
     </div>
   );
 }
