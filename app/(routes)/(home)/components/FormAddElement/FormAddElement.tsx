@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -28,9 +28,13 @@ import { Copy, Earth, Eye, Shuffle } from "lucide-react";
 import { copyClipboard } from "@/lib/copyClipboard";
 import { useState } from "react";
 import { generatePassword } from "@/lib/generatePassword";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 export function FormAddElement() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,17 +50,36 @@ export function FormAddElement() {
     },
   });
 
-  // 2. Define a submit handler.
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await axios.post("/api/items", values);
+      toast({ title: "Item created" });
+
+      form.reset({
+        typeElement: "",
+        isFavourite: false,
+        name: "",
+        directory: "",
+        username: "",
+        password: "",
+        urlWebsite: "",
+        notes: "",
+        userId: "ajdadad",
+      });
+
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        variant: "destructive",
+      });
+    }
   };
 
   const generateRandomPassword = () => {
-    const password = generatePassword()
-    form.setValue("password", password)
-  }
+    const password = generatePassword();
+    form.setValue("password", password);
+  };
 
   const updateUrl = () => {
     form.setValue("urlWebsite", window.location.href);
@@ -241,7 +264,34 @@ export function FormAddElement() {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <div>
+            <div className="text-slate-400 flex items-center justify-between text-sm">
+              Autenticación TOTP
+              <p className="px-3 bg-green-700 text-white rounded-lg text-xs mr-5">
+                Premium
+              </p>
+            </div>
+            <Input disabled />
+          </div>
+
+          <FormField
+            control={form.control}
+            name="notes"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Notes</FormLabel>
+                <FormControl>
+                  <Textarea {...field} />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div />
+
+          <Button type="submit">Guardar</Button>
         </form>
       </Form>
     </div>
