@@ -7,3 +7,6 @@ export type DataHeaderMainItemProps = {
 };
 
 
+export type HeaderMainProps = {
+  userId: string;
+}

@@ -31,8 +31,10 @@ import { generatePassword } from "@/lib/generatePassword";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { FormAddElementProps } from "./FormAddElement.types";
 
-export function FormAddElement() {
+export function FormAddElement(props: FormAddElementProps) {
+  const {userId} = props
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,7 +48,7 @@ export function FormAddElement() {
       password: "",
       urlWebsite: "",
       notes: "",
-      userId: "ajdadad",
+      userId,
     },
   });
 
@@ -64,7 +66,6 @@ export function FormAddElement() {
         password: "",
         urlWebsite: "",
         notes: "",
-        userId: "ajdadad",
       });
 
       router.refresh();
