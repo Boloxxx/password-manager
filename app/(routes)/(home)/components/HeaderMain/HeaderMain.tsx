@@ -71,7 +71,7 @@ export function HeaderMain( props: HeaderMainProps) {
           <DialogHeader>
             <DialogTitle>Nuevo elemento</DialogTitle>
           </DialogHeader>
-          {typeElement === "password" && <FormAddElement userId={userId} />}
+          {typeElement === "password" && <FormAddElement userId={userId} closeDialog={closeDialogAndDropdown} />}
         </DialogContent>
       </Dialog>
     </div>

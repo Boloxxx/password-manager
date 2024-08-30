@@ -56,7 +56,7 @@ export function FormEditElement(props: FormEditElementProps) {
       await axios.patch(`/api/items/${dataElement.id}`, values);
       toast({ title: "Item Edited 👌" });
 
-      router.push("/");
+      router.push("/")
     } catch (error) {
       toast({
         title: "Something went wrong",

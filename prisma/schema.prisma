@@ -14,31 +14,31 @@ datasource db {
 }
 
 model User {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String?
-  username String? @unique
-  email String? @unique
-  image String?
-  coverImage String?
-  profileImage String?
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  username       String?  @unique
+  email          String?  @unique
+  image          String?
+  coverImage     String?
+  profileImage   String?
   hashedPassword String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   elements Element[]
 }
 
 model Element {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String?
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String?
   typeElement String // Inicio de sesion - tarjeta - identidad
   isFavourite Boolean
-  urlWebsite String?
-  username String?
-  password String?
-  notes String?
-  userId String @db.ObjectId
-  directory String?
+  urlWebsite  String?
+  username    String?
+  password    String?
+  notes       String?
+  userId      String  @db.ObjectId
+  directory   String?
 
   user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 

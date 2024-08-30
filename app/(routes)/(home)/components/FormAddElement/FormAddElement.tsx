@@ -33,7 +33,7 @@ import { useRouter } from "next/navigation";
 import { FormAddElementProps } from "./FormAddElement.types";
 
 export function FormAddElement(props: FormAddElementProps) {
-  const {userId} = props
+  const {userId, closeDialog} = props
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -66,6 +66,7 @@ export function FormAddElement(props: FormAddElementProps) {
         urlWebsite: "",
         notes: "",
       });
+      closeDialog()
 
       router.refresh();
     } catch (error) {

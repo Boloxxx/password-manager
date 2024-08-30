@@ -1,13 +1,10 @@
-import { getServerSession } from "next-auth";
-import { HeaderMain } from "./components/HeaderMain";
-import { redirect } from "next/navigation";
+import { DataTableItems } from "@/components/Shared/DataTableItems";
 import { db } from "@/lib/db";
-import { TableData } from "./components/TableData";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-
-export default async function Home() {
+export default async function CreditCardPage() {
   const session = await getServerSession();
-
   if (!session || !session.user?.email) {
     return redirect("/");
   }
@@ -18,6 +15,9 @@ export default async function Home() {
     },
     include: {
       elements: {
+        where: {
+          typeElement: "Tarjeta",
+        },
         orderBy: {
           createdAt: "desc",
         },
@@ -28,12 +28,10 @@ export default async function Home() {
   if (!user || !user.elements) {
     return redirect("/");
   }
-
-
-  return (
-    <div>
-      <HeaderMain userId={user.id} />
-      <TableData elements={user.elements} />
-    </div>
-  );
+  return <div>
+     <h1 className="text-xl md:text-3xl font-semibold">
+        List of Credit Card
+     </h1>
+     <DataTableItems elements={user.elements}/>
+  </div>;
 }
