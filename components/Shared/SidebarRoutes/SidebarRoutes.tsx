@@ -13,7 +13,7 @@ import {
   dataSidebarElements,
   dataSidebarConfiguration,
 } from "./SidebarRoutes.data";
-import { space } from "postcss/lib/list";
+import { signOut } from "next-auth/react";
 
 export function SidebarRoutes() {
   return (
@@ -103,7 +103,7 @@ export function SidebarRoutes() {
       <SingleItem href="/analytic" label="Analytics" icon={BarChart} />
 
       <SingleItem
-        onClick={() => console.log("Close session")}
+        onClick={() => signOut()}
         href="#"
         label="Close Sesion"
         icon={DoorClosed}
