@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 const poppins = Poppins({ subsets: ["latin"], weight: ['200', '400', '500', '800'] });
 
 export const metadata: Metadata = {
-  title: "BoloxPassword",
+  title: "Password Manager",
   description: "Creating a password manager",
 };
 

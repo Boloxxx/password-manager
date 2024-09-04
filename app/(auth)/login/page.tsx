@@ -16,7 +16,7 @@ export default async function LoginPage() {
       <div className="flex justify-center h-full">
         <div className="text-white flex flex-col items-center justify-center p-6">
           <h1 className="text-blue-500 text-2xl text-center mb-5">
-            BoloxPassword
+            Password Manager 🐺 
           </h1>
           <h2 className="text-4xl font-medium text-black">Welcome Back</h2>
           <p className="text-center mt-4 mb-6 text-slate-400 text-sm">
