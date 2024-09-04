@@ -8,14 +8,14 @@ export default function LayoutRoutes({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <main className="h-full">
-      <div className="flex justify-between lg:hidden px-6 py-3 items-center bg-blue-800">
+      <div className="flex justify-between lg:hidden px-6 py-3 items-center bg-slate-800">
         <div className="py-1 text-white">
           <Logo />
         </div>
         <SidebarMobile/>
       </div>
       <div className="flex h-full">
-        <div className="max-w-lg hidden lg:flex h-full w-72 flex-col bg-blue-800 px-4 text-white">
+        <div className="max-w-lg hidden lg:flex h-full w-72 flex-col bg-gray-800 px-4 text-white">
             <Sidebar/>
         </div>
         <div className="w-full lg:72">

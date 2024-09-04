@@ -19,7 +19,7 @@ export function SidebarMobile() {
             <Menu/>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="bg-blue-800 text-white">
+      <SheetContent side="left" className="bg-gray-800 text-white">
         <SheetHeader className="text-left mb-5">
           <SheetTitle className="text-white">BoloxPassword</SheetTitle>
           <SheetDescription className="text-slate-100">
