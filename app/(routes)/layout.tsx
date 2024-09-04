@@ -18,7 +18,7 @@ export default function LayoutRoutes({
         <div className="max-w-lg hidden lg:flex h-full w-72 flex-col bg-gray-800 px-4 text-white">
             <Sidebar/>
         </div>
-        <div className="w-full lg:72">
+        <div className="w-full lg:pl-72">
             <div className="p-6">{children}</div>
 
         </div>
