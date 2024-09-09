@@ -1,9 +1,13 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
+interface Params {
+  itemId: string;
+}
+
 export async function PATCH(
   req: Request,
-  { params }: { params: { itemId: string } }
+  { params }: { params: Params }
 ) {
   try {
     const { itemId } = params;
@@ -28,3 +32,5 @@ export async function PATCH(
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
+
+
